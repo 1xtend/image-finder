@@ -38,6 +38,11 @@ function App() {
         },
       })
       .then((res) => {
+        if (res.data.totalHits === 0) {
+          setError('Missing images');
+          return;
+        }
+
         setImages((prevImages) => [...prevImages, ...res.data.hits]);
         setPagesCount(Math.ceil(res.data.totalHits / 12));
       })
@@ -81,6 +86,7 @@ function App() {
     setQuery(searchQuery);
     setPage(1);
     setPagesCount(0);
+    setError(null);
   }
 
   function handleLoadMoreClick() {
