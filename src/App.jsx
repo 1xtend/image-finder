@@ -106,11 +106,7 @@ function App() {
         </p>
       )}
 
-      <div
-        style={{
-          textAlign: 'center',
-        }}
-      >
+      <div className="BottomWrapper">
         {!error && loading && <Loader />}
         {!error && images.length > 0 && page < pagesCount && (
           <Button onLoadMore={handleLoadMoreClick} />
